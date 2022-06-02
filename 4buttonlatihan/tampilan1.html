@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<body>
+    <div id="all post">
+    <div id="post1"
+    style="background-color: white">
+   Text data 1
+    </div>
+</div>
+<div class="buttonall" style="color: white" >
+    <div id="buttonwarna" 
+    style=
+    "cursor:pointer;
+    background-color:blue;
+    width: 13vw;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 5px;
+    ">    Warna
+    </div>
+    <div id="buttonnambah" 
+    style=
+    "cursor:pointer;
+    background-color: blue;
+    width: 13vw;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 5px;
+    ">  Nambah
+    </div>
+    <div id="buttondelete" 
+    style=
+    "cursor:pointer;
+    background-color: red;
+    width: 13vw;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 5px;
+    ">   Delete
+    </div>
+    <div id="buttondeleteall" 
+    style=
+    "cursor:pointer;
+    background-color: red;
+    width: 13vw;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 5px;
+    ">   Delete all
+    </div>
+
+</div>
+
+</div>
+</body>
+<script>
+let klik1 = document.getElementById("buttonwarna");
+let klik2 = document.getElementById("buttondelete");
+let klik3 = document.getElementById("buttonnambah");
+let klik4 = document.getElementById("buttondeleteall");
+let post11 = document.getElementById("post1");
+let parent = document.getElementById("all post");
+let tagpos = 1;
+klik1.onclick = function(){
+    if( document.getElementById("post" + tagpos).style.backgroundColor === "white"){
+    document.getElementById("post" + tagpos).setAttribute
+    ("style"
+    ,"background-color: blue;color:white");
+}
+    else{
+        document.getElementById("post" + tagpos).setAttribute("style","background-color: white");
+    }
+    }
+    klik2.onclick = function(){
+        // parent.innerHTML = null;
+        document.getElementById("post" + tagpos).remove();
+        tagpos--;
+    }
+
+    klik3.onclick = function(){
+        let clonenya = post11.cloneNode(true);
+        tagpos++;
+        clonenya.setAttribute("id", "post" + tagpos)
+        clonenya.innerHTML = "Text data " + tagpos;
+        parent.append(clonenya);
+    }
+    klik4.onclick = function(){
+        parent.innerHTML = null;
+        tagpos = 0;
+    }
+</script>
+</html>
