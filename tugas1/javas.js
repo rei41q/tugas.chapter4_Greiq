@@ -4,7 +4,9 @@ let klik3 = document.getElementById("buttonnambah");
 let klik4 = document.getElementById("buttondeleteall");
 let post11 = document.getElementById("post1");
 let parent = document.getElementById("all post");
+let klik5 = document.getElementById("buttonwarnaall");
 let tagpos = 1;
+let warnasemua=false;
 let clonenya;
 klik1.onclick = function(){
     if( document.getElementById("post" + tagpos).style.backgroundColor === "white"){
@@ -23,6 +25,7 @@ klik1.onclick = function(){
     }
 
     klik3.onclick = function(){
+        warnasemua = false;
        if(tagpos==0){
         clonenya = post11.cloneNode(true);
        }else{
@@ -38,4 +41,22 @@ klik1.onclick = function(){
     klik4.onclick = function(){
         parent.innerHTML = null;
         tagpos = 0;
+    }
+    klik5.onclick = function(){
+       if(warnasemua == false){
+           warnasemua = true;
+        for(let i=1 ; i<=tagpos ; i++){
+            document.getElementById("post" + i).setAttribute
+            ("style"
+            ,"background-color: blue;color:white");
+        }
+    }
+    else{
+        for(let i=1 ; i<=tagpos ; i++){
+            document.getElementById("post" + i).setAttribute
+            ("style"
+            ,"background-color: white;color:black");
+        }
+        warnasemua = false;
+    }
     }

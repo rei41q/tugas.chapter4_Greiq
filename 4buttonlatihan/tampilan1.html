@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+
 </head>
 <body>
     <div id="all post">
@@ -20,17 +21,27 @@
     style=
     "cursor:pointer;
     background-color:blue;
-    width: 13vw;
+    width: 15vw;
     text-align: center;
     border-radius: 5px;
     margin-top: 5px;
     ">    Warna
     </div>
+    <div id="buttonwarnaall" 
+    style=
+    "cursor:pointer;
+    background-color:blue;
+    width: 15vw;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 5px;
+    ">    Warnain all
+    </div>
     <div id="buttonnambah" 
     style=
     "cursor:pointer;
     background-color: blue;
-    width: 13vw;
+    width: 15vw;
     text-align: center;
     border-radius: 5px;
     margin-top: 5px;
@@ -40,7 +51,7 @@
     style=
     "cursor:pointer;
     background-color: red;
-    width: 13vw;
+    width: 15vw;
     text-align: center;
     border-radius: 5px;
     margin-top: 5px;
@@ -50,7 +61,7 @@
     style=
     "cursor:pointer;
     background-color: red;
-    width: 13vw;
+    width: 15vw;
     text-align: center;
     border-radius: 5px;
     margin-top: 5px;
@@ -68,7 +79,9 @@ let klik3 = document.getElementById("buttonnambah");
 let klik4 = document.getElementById("buttondeleteall");
 let post11 = document.getElementById("post1");
 let parent = document.getElementById("all post");
+let klik5 = document.getElementById("buttonwarnaall");
 let tagpos = 1;
+let warnasemua=false;
 let clonenya;
 klik1.onclick = function(){
     if( document.getElementById("post" + tagpos).style.backgroundColor === "white"){
@@ -87,6 +100,7 @@ klik1.onclick = function(){
     }
 
     klik3.onclick = function(){
+        warnasemua = false;
        if(tagpos==0){
         clonenya = post11.cloneNode(true);
        }else{
@@ -103,5 +117,24 @@ klik1.onclick = function(){
         parent.innerHTML = null;
         tagpos = 0;
     }
+    klik5.onclick = function(){
+       if(warnasemua == false){
+           warnasemua = true;
+        for(let i=1 ; i<=tagpos ; i++){
+            document.getElementById("post" + i).setAttribute
+            ("style"
+            ,"background-color: blue;color:white");
+        }
+    }
+    else{
+        for(let i=1 ; i<=tagpos ; i++){
+            document.getElementById("post" + i).setAttribute
+            ("style"
+            ,"background-color: white;color:black");
+        }
+        warnasemua = false;
+    }
+    }
+
 </script>
 </html>
