@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="all post">
-    <div id="post1"
+    <div id="post1" class="cpost1"
     style="background-color: white">
    Text data 1
     </div>
@@ -90,6 +90,7 @@ klik1.onclick = function(){
         tagpos++;
         clonenya.setAttribute("id", "post" + tagpos)
         clonenya.innerHTML = "Text data " + tagpos;
+        clonenya.setAttribute('class', "cpost"+tagpos);
         parent.append(clonenya);
     }
     klik4.onclick = function(){
