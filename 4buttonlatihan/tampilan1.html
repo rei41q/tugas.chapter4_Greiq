@@ -69,6 +69,7 @@ let klik4 = document.getElementById("buttondeleteall");
 let post11 = document.getElementById("post1");
 let parent = document.getElementById("all post");
 let tagpos = 1;
+let clonenya;
 klik1.onclick = function(){
     if( document.getElementById("post" + tagpos).style.backgroundColor === "white"){
     document.getElementById("post" + tagpos).setAttribute
@@ -86,11 +87,16 @@ klik1.onclick = function(){
     }
 
     klik3.onclick = function(){
-        let clonenya = post11.cloneNode(true);
+       if(tagpos==0){
+        clonenya = post11.cloneNode(true);
+       }else{
+        clonenya = document.getElementById("post" + tagpos).cloneNode(true);
+       }
         tagpos++;
         clonenya.setAttribute("id", "post" + tagpos)
         clonenya.innerHTML = "Text data " + tagpos;
         clonenya.setAttribute('class', "cpost"+tagpos);
+        clonenya.setAttribute("style","background-color: white");
         parent.append(clonenya);
     }
     klik4.onclick = function(){
