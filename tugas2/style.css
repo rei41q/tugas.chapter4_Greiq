@@ -1,0 +1,61 @@
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 20px;
+  
+  }
+  
+  .box {
+    width: 70px;
+    height: 70px;
+    border: 0.2px solid black;
+    cursor: pointer;
+  }
+  
+  .box:first-child,
+  .box:nth-child(2),
+  .box:nth-child(3) {
+    border-top: none;
+  }
+  
+  .box:nth-child(3n + 1) {
+    border-left: none;
+  }
+  
+  .box:nth-child(3n + 3) {
+    border-right: none;
+  }
+  
+  .box:nth-child(7),
+  .box:nth-child(8),
+  .box:last-child {
+    border-bottom: none;
+  }
+  
+  .cross { 
+    background-color: red;
+  }
+  
+  .circle {
+    background-color: yellow;
+    border: 0px solid yellow;
+    border-radius: 50%;
+    width: 100%;
+   
+  } 
+  #pemenangnya{
+    background-color: rgb(255, 7, 7);
+    font-size: 30px;
+    width: 40%;
+    color:  rgb(255, 255, 255);
+    text-align: center;
+  }
+  #info{
+    font-size: 30px;
+    color: red;
+    text-align: center;
+    margin-top: 50px;
+  }
+  
