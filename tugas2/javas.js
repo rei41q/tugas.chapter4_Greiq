@@ -101,6 +101,7 @@ function cekpemenangcross2(){
       langkahcros = 0;
       pemenang.innerHTML = "Cross Menang";
       console.log("cross menang");
+
     }
 }
 function cekpemenangcircle2(){
@@ -133,6 +134,7 @@ if(langkacircle == 3){
   langkacircle = 0;
   pemenang.innerHTML = "Circle Menang";
   console.log("Circle menang");
+
 }
 }
 
