@@ -35,8 +35,9 @@
   }
   
   .cross { 
-    background-image: url("./aset/merah.png");
+    background-image: url("./aset/silangmerah.jpg");
     background-size: 100% 100%;
+    border: 0px solid red;
   }
   
   .circle {
