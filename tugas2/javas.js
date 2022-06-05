@@ -91,7 +91,9 @@ function cekpemenangcross2(){
             if(boxElements[i-4].className == "box cross"
             && boxElements[i+4].className == "box cross"
             || boxElements[i-2].className == "box cross"
-            && boxElements[i+2].className == "box cross"){
+            && boxElements[i+2].className == "box cross"
+            || boxElements[i-3].className == "box cross"
+            && boxElements[i+3].className == "box cross"){
                 langkahcros = 3;
             }
           }
@@ -101,7 +103,6 @@ function cekpemenangcross2(){
       langkahcros = 0;
       pemenang.innerHTML = "Cross Menang";
       console.log("cross menang");
-
     }
 }
 function cekpemenangcircle2(){
@@ -124,7 +125,9 @@ function cekpemenangcircle2(){
         if(boxElements[i-4].className == "box circle"
         && boxElements[i+4].className == "box circle"
         || boxElements[i-2].className == "box circle"
-        && boxElements[i+2].className == "box circle"){
+        && boxElements[i+2].className == "box circle"
+        || boxElements[i-3].className == "box circle"
+        && boxElements[i+3].className == "box circle"){
             langkacircle = 3;
         }
       }
