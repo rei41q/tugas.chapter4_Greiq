@@ -91,7 +91,7 @@ function cekpemenangcross2(){
             if(boxElements[i-4].className == "box cross"
             && boxElements[i+4].className == "box cross"
             || boxElements[i-2].className == "box cross"
-            && boxElements[i+6].className == "box cross"){
+            && boxElements[i+2].className == "box cross"){
                 langkahcros = 3;
             }
           }
