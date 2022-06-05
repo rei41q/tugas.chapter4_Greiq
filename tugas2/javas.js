@@ -31,6 +31,7 @@ let crossindex=0,circleindex=0;
 resetButton.onclick = startGame;
 let titikawalcros= -1;
 let nilaicros = true;
+//tes
 function placeMark(box, currentClass, cekwin) {
   box.classList.add(currentClass);
 }
