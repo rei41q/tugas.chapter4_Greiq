@@ -10,7 +10,7 @@
 
 </head>
 <body>
-    <div id="tampilan1">
+    <div id="tampilan1" style="margin-left: 40%;margin-top: 20%;">
     <div id="all post">
     <div id="post1" class="cpost1"
     style="background-color: white">
@@ -90,7 +90,7 @@ klik1.onclick = function(){
     if( document.getElementById("post" + tagpos).style.backgroundColor === "white"){
     document.getElementById("post" + tagpos).setAttribute
     ("style"
-    ,"background-color: blue;color:white");
+    ,"background-color: blue;color:white;width:25%");
 }
     else{
         document.getElementById("post" + tagpos).setAttribute("style","background-color: white");
@@ -126,7 +126,7 @@ klik1.onclick = function(){
         for(let i=1 ; i<=tagpos ; i++){
             document.getElementById("post" + i).setAttribute
             ("style"
-            ,"background-color: blue;color:white");
+            ,"background-color: blue;color:white;width:25%");
         }
     }
     else{

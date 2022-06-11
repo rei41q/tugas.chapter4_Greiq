@@ -60,3 +60,24 @@ klik1.onclick = function(){
         warnasemua = false;
     }
     }
+    function game(angka1){
+        let cekfizz = false;
+        let cekbuzz = false;
+        for(let i = 1 ; i<=angka1 ; i++){
+            if(i%5 == 0 && i%3 == 0){
+                 console.log("fizz buzz");
+             }
+            else if(i%3 == 0 ){
+                console.log("fizz");
+                cekfizz = true;
+            }
+            else if(i%5 == 0){
+                console.log("buzz");
+                cekbuzz = true;
+            }
+            else{
+                console.log(i);
+            }
+        }
+    }
+    game(100);

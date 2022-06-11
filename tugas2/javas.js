@@ -35,9 +35,7 @@ let nilaicros = true;
 function placeMark(box, currentClass, cekwin) {
   box.classList.add(currentClass);
 }
-
-function handleClick(e) {
-  
+function handleClick(e) { 
   const boxTarget = e.target;
   let tidakperludicek = false;
   if(pemenang.innerHTML == ""){
@@ -53,7 +51,6 @@ function handleClick(e) {
       pemenang.innerHTML = "";
   placeMark(boxTarget, turn, cekwin++);
       if(titikawalcros == -1 || crossindex>3){
-
   }
   console.log("jumlah cross : ", crossindex);
         turn = circle;
@@ -68,99 +65,62 @@ function handleClick(e) {
     }
     turncross = true;
     turncircle = true;
-cekpemenangcross2();
-cekpemenangcircle2();
+cekpemenang("box cross");
+cekpemenang("box circle");
   }
 }
-function cekpemenangcross2(){
+function cekpemenang(objektarget){
   let langkahcros = 0;
       for(let i = 0 ; i< 9 ; i++){
-        if(boxElements[i].className == "box cross"){
+        if(boxElements[i].className == objektarget){
             if(i == 1 || i == 4 || i==7){
-                if(boxElements[i-1].className == "box cross"
-                && boxElements[i+1].className == "box cross"){
+                if(boxElements[i-1].className == objektarget
+                && boxElements[i+1].className == objektarget){
                     langkahcros = 3;
                 }
             }
             else if(i == 3 || i == 4 || i==5){
-              if(boxElements[i-3].className == "box cross"
-              && boxElements[i+3].className == "box cross"){
+              if(boxElements[i-3].className == objektarget
+              && boxElements[i+3].className == objektarget){
                   langkahcros = 3;
               }
           }
           if(i == 4 && langkahcros!=3){
-            if(boxElements[i-4].className == "box cross"
-            && boxElements[i+4].className == "box cross"
-            || boxElements[i-2].className == "box cross"
-            && boxElements[i+2].className == "box cross"
-            || boxElements[i-3].className == "box cross"
-            && boxElements[i+3].className == "box cross"){
+            if(boxElements[i-4].className == objektarget
+            && boxElements[i+4].className == objektarget
+            || boxElements[i-2].className == objektarget
+            && boxElements[i+2].className == objektarget
+            || boxElements[i-3].className == objektarget
+            && boxElements[i+3].className == objektarget){
                 langkahcros = 3;
+                
             }
           }
       }
     }
     if(langkahcros == 3){
       langkahcros = 0;
-      pemenang.innerHTML = "Cross Menang";
-      console.log("cross menang");
+      if(objektarget=="box cross"){
+      pemenang.innerHTML = "cross menang";
+      }
+      else{
+        pemenang.innerHTML = "circle menang";
+      }
     }
 }
-function cekpemenangcircle2(){
-  let langkacircle = 0;
-  for(let i = 0 ; i< 9 ; i++){
-    if(boxElements[i].className == "box circle"){
-        if(i == 1 || i == 4 || i==7){
-            if(boxElements[i-1].className == "box circle"
-            && boxElements[i+1].className == "box circle"){
-                langkacircle = 3;
-            }
-        }
-        else if(i == 3 || i == 4 || i==5){
-          if(boxElements[i-3].className == "box circle"
-          && boxElements[i+3].className == "box circle"){
-              langkacircle = 3;
-          }
-      }
-      if(i == 4 && langkacircle!=3){
-        if(boxElements[i-4].className == "box circle"
-        && boxElements[i+4].className == "box circle"
-        || boxElements[i-2].className == "box circle"
-        && boxElements[i+2].className == "box circle"
-        || boxElements[i-3].className == "box circle"
-        && boxElements[i+3].className == "box circle"){
-            langkacircle = 3;
-        }
-      }
-  }
-}
-if(langkacircle == 3){
-  langkacircle = 0;
-  pemenang.innerHTML = "Circle Menang";
-  console.log("Circle menang");
-
-}
-}
-
 function startGame() {
   boxElements.forEach((box) => {
     box.addEventListener("click", handleClick);
    
   });
-  
- 
 }
-
-
 resetButton.onclick = function(){
 resetall();
 }
-
 function resetall(){
   for(let i = 0; i < boxElements.length; i++){
   boxElements[i].className = "box";
   datamenang[i] = null;
-
 }
 turn = cross;
 cekwin = 0;
@@ -171,6 +131,4 @@ crossindex = 0;
 pemenang.innerHTML = "";
 
 }
-
-
 startGame();
