@@ -72,6 +72,7 @@ class player{
 let objekCircle = new player(0,"circle",true);
 let objekCross = new player(0,"cross",true);
 
+
 DataAwal.pemenang.innerHTML = "";
 // Button.onclick = startGame;
 
@@ -89,15 +90,12 @@ function handleClick(e) {
       }
     if(DataAwal.turn == objekCross.status && objekCross.turnAktifPlayer == true){
       DataAwal.pemenang.innerHTML = "";
-      console.log("masuk");
       objekCross.indexPlayer++;;
       DataAwal.pemenang.innerHTML = "";
   placeMark(boxTarget, DataAwal.turn);
       if(DataAwal.titikAwalCross == -1 || objekCross.indexPlayer++>3){
   }
-  console.log("jumlah cross : ", objekCross.indexPlayer++);
         DataAwal.turn = objekCircle.status;
-        console.log(DataAwal.turn);
         nilaicros = true;
      
     }
