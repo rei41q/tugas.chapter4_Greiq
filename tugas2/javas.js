@@ -13,122 +13,123 @@
 //     box.addEventListener("click");
 // });
 
+class DataAwal{
+  static boxElements = document.querySelectorAll(".box");
+  static resetbutton = document.getElementById("reset");
+  static pemenang = document.getElementById("pemenangnya");
+  static titikAwalCross= -1;
+  static nilaicros = true;
+  static turn = "cross";
+}
 
-let cross = "cross";
-let circle = "circle";
-let boxElements = document.querySelectorAll(".box");
-let resetButton = document.getElementById("reset");
-let alldiv = document.getElementById("board");
-let pemenang = document.getElementById("pemenangnya");
-pemenang.innerHTML = "";
-let turn = cross;
-let turncross = true;
-let turncircle = true
-let sekalilagi = true;
-let cekwin = 0;
-let datamenang = [];
-let crossindex=0,circleindex=0;
-resetButton.onclick = startGame;
-let titikawalcros= -1;
-let nilaicros = true;
-//tes
-function placeMark(box, currentClass, cekwin) {
+class player{
+  constructor(indexPlayer,status,turnAktifPlayer){{
+      this.indexPlayer = indexPlayer;
+      this.status = status;
+      this.turnAktifPlayer = turnAktifPlayer;
+    }
+  }
+  cekpemenang(objektarget){
+    let langkahcros = 0;
+        for(let i = 0 ; i< 9 ; i++){
+          if(DataAwal.boxElements[i].className == objektarget){
+              if(i == 1 || i == 4 || i==7){
+                  if(DataAwal.boxElements[i-1].className == objektarget
+                  && DataAwal.boxElements[i+1].className == objektarget){
+                      langkahcros = 3;
+                  }
+              }
+              else if(i == 3 || i == 4 || i==5){
+                if(DataAwal.boxElements[i-3].className == objektarget
+                && DataAwal.boxElements[i+3].className == objektarget){
+                    langkahcros = 3;
+                }
+            }
+            if(i == 4 && langkahcros!=3){
+              if(DataAwal.boxElements[i-4].className == objektarget
+              && DataAwal.boxElements[i+4].className == objektarget
+              || DataAwal.boxElements[i-2].className == objektarget
+              && DataAwal.boxElements[i+2].className == objektarget
+              || DataAwal.boxElements[i-3].className == objektarget
+              && DataAwal.boxElements[i+3].className == objektarget){
+                  langkahcros = 3;
+                  
+              }
+            }
+        }
+      }
+      if(langkahcros == 3){
+        langkahcros = 0;
+        if(objektarget=="box cross"){
+        DataAwal.pemenang.innerHTML = "cross menang";
+        }
+        else{
+          DataAwal.pemenang.innerHTML = "circle menang";
+        }
+      }
+  }
+}
+let objekCircle = new player(0,"circle",true);
+let objekCross = new player(0,"cross",true);
+
+DataAwal.pemenang.innerHTML = "";
+// Button.onclick = startGame;
+
+function placeMark(box, currentClass) {
   box.classList.add(currentClass);
 }
 function handleClick(e) { 
   const boxTarget = e.target;
   let tidakperludicek = false;
-  if(pemenang.innerHTML == ""){
+  if(DataAwal.pemenang.innerHTML == ""){
       if(boxTarget.className == "box cross"
 || boxTarget.className == "box circle"){
-        turncross = false;
-        turncircle = false;
+        objekCross.turnAktifPlayer = false;
+        objekCircle.turnAktifPlayer = false;
       }
-    if(turn == cross && turncross == true){
-      pemenang.innerHTML = "";
+    if(DataAwal.turn == objekCross.status && objekCross.turnAktifPlayer == true){
+      DataAwal.pemenang.innerHTML = "";
       console.log("masuk");
-      crossindex++;
-      pemenang.innerHTML = "";
-  placeMark(boxTarget, turn, cekwin++);
-      if(titikawalcros == -1 || crossindex>3){
+      objekCross.indexPlayer++;;
+      DataAwal.pemenang.innerHTML = "";
+  placeMark(boxTarget, DataAwal.turn);
+      if(DataAwal.titikAwalCross == -1 || objekCross.indexPlayer++>3){
   }
-  console.log("jumlah cross : ", crossindex);
-        turn = circle;
+  console.log("jumlah cross : ", objekCross.indexPlayer++);
+        DataAwal.turn = objekCircle.status;
+        console.log(DataAwal.turn);
         nilaicros = true;
      
     }
-     else if(turn == circle && turncircle == true){
+     else if(DataAwal.turn == objekCircle.status && objekCircle.turnAktifPlayer == true){
     
-        placeMark(boxTarget, turn, cekwin++);
-        turn = cross;
+        placeMark(boxTarget, DataAwal.turn);
+        DataAwal.turn = objekCross.status;
 
     }
-    turncross = true;
-    turncircle = true;
-cekpemenang("box cross");
-cekpemenang("box circle");
+    objekCross.turnAktifPlayer = true;
+    objekCircle.turnAktifPlayer = true;
+objekCircle.cekpemenang("box cross");
+objekCircle.cekpemenang("box circle");
   }
 }
-function cekpemenang(objektarget){
-  let langkahcros = 0;
-      for(let i = 0 ; i< 9 ; i++){
-        if(boxElements[i].className == objektarget){
-            if(i == 1 || i == 4 || i==7){
-                if(boxElements[i-1].className == objektarget
-                && boxElements[i+1].className == objektarget){
-                    langkahcros = 3;
-                }
-            }
-            else if(i == 3 || i == 4 || i==5){
-              if(boxElements[i-3].className == objektarget
-              && boxElements[i+3].className == objektarget){
-                  langkahcros = 3;
-              }
-          }
-          if(i == 4 && langkahcros!=3){
-            if(boxElements[i-4].className == objektarget
-            && boxElements[i+4].className == objektarget
-            || boxElements[i-2].className == objektarget
-            && boxElements[i+2].className == objektarget
-            || boxElements[i-3].className == objektarget
-            && boxElements[i+3].className == objektarget){
-                langkahcros = 3;
-                
-            }
-          }
-      }
-    }
-    if(langkahcros == 3){
-      langkahcros = 0;
-      if(objektarget=="box cross"){
-      pemenang.innerHTML = "cross menang";
-      }
-      else{
-        pemenang.innerHTML = "circle menang";
-      }
-    }
-}
 function startGame() {
-  boxElements.forEach((box) => {
+  DataAwal.boxElements.forEach((box) => {
     box.addEventListener("click", handleClick);
-   
   });
 }
-resetButton.onclick = function(){
+DataAwal.resetbutton.onclick = function(){
 resetall();
 }
 function resetall(){
-  for(let i = 0; i < boxElements.length; i++){
-  boxElements[i].className = "box";
-  datamenang[i] = null;
+  for(let i = 0; i < DataAwal.boxElements.length; i++){
+  DataAwal.boxElements[i].className = "box";
 }
-turn = cross;
-cekwin = 0;
-crossindex = 0;
-circleindex = 0;
-titikawalcros = -1;
-crossindex = 0;
-pemenang.innerHTML = "";
-
+DataAwal.turn = objekCross.status;
+objekCross.indexPlayer = 0;
+objekCircle.indexPlayer = 0;
+DataAwal.titikAwalCross = -1;
+objekCross.indexPlayer = 0;
+DataAwal.pemenang.innerHTML = "";
 }
 startGame();
