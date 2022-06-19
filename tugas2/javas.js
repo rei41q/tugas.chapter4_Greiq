@@ -74,7 +74,7 @@ let objekCross = new player(0,"cross",true);
 
 
 DataAwal.pemenang.innerHTML = "";
-// Button.onclick = startGame;
+// Button.onclick=startGame;
 
 function placeMark(box, currentClass) {
   box.classList.add(currentClass);
